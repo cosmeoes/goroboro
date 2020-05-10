@@ -1,10 +1,14 @@
 package routing
 
 import (
+	"fmt"
 	"net/http"
+	"sync"
 	"github.com/julienschmidt/httprouter"
-    "fmt"
 )
+
+var once sync.Once
+var instance Router
 
 type Router struct {
     router *httprouter.Router
@@ -12,9 +16,13 @@ type Router struct {
 }
 
 func NewRouter() *Router{
-    r := new(Router)
-    r.router = httprouter.New()
-    return r
+
+    once.Do(func() {
+            instance := new(Router)
+            instance.router = httprouter.New()
+    })
+
+    return &instance
 }
 
 func (r *Router) GET(path string, handler Handle) {
