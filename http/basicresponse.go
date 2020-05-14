@@ -6,7 +6,8 @@ type BasicResponse struct {
     Message string
 }
 
-func (r BasicResponse) Respond(responseWriter http.ResponseWriter) {
-    responseWriter.Write([]byte(r.Message))
+func (r BasicResponse) Respond(responseWriter http.ResponseWriter) error {
+    _, error := responseWriter.Write([]byte(r.Message))
+    return error
 }
 

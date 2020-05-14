@@ -3,7 +3,6 @@ package http
 import "net/http"
 
 type Response interface {
-   Respond(http.ResponseWriter)
+   Respond(http.ResponseWriter) error
 }
 
-type Handle func(*Request) Response

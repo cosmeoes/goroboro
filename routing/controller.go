@@ -1,7 +1,7 @@
 package routing
 
-type Controller struct {
-    middleware []interface{}
+type Controller interface {
 }
 
 
+var ControllersRegistry []Controller
