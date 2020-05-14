@@ -2,11 +2,11 @@ package http
 
 import "net/http"
 
-type BasicResponse struct {
+type Text struct {
     Message string
 }
 
-func (r BasicResponse) Respond(responseWriter http.ResponseWriter) error {
+func (r Text) Respond(responseWriter http.ResponseWriter) error {
     _, error := responseWriter.Write([]byte(r.Message))
     return error
 }

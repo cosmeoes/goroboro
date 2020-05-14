@@ -2,16 +2,14 @@ package http
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 )
 
-type JsonResponse struct {
+type Json struct {
     Data interface{} 
 }
 
-func (r JsonResponse) Respond(responseWriter http.ResponseWriter) error {
-    return fmt.Errorf("B-baka")
+func (r Json) Respond(responseWriter http.ResponseWriter) error {
     responseWriter.Header().Add("Content-Type", "application/json")
     json, err := json.Marshal(r.Data)
     if err != nil {
