@@ -1,0 +1,5 @@
+driver: "mysql"
+username: "root"
+password: ""
+database: "IMM"
+host: "localhost"
